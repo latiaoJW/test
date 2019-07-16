@@ -25,7 +25,7 @@
     </div>
     <!-- 商品列表 -->
     <div class="goods">
-      <div class="goods_item" v-for="(item, index) in list" :key="index">
+      <div class="goods_item" v-for="(item, index) in list" :key="index" @click="gotoDetail()">
         <goods-item
           :img="item.goodsImg"
           :price="item.price"
@@ -70,6 +70,12 @@ export default {
       axios.get("/api/goodsList.json").then(res => {
         console.log(res.data.goodslist);
         _this.list = res.data.goodslist;
+      });
+    },
+    // 点击商品块
+    gotoDetail() {
+      this.$router.push({
+        path: "/goodsDetail"
       });
     }
   }

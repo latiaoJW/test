@@ -8,7 +8,7 @@
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
-      <div class="topnav">
+      <div class="topnav" @click="goBack">
         <span class="iconfont">&#xe779;</span>
       </div>
     </div>
@@ -91,7 +91,7 @@
     </div>
     <!-- 底部栏购物栏 -->
     <div class="shopcart">
-      <div class="shopcart_cart">
+      <div class="shopcart_cart" @click="gotoCart()">
         <span class="iconfont shopcart_cart_icon">&#xe63f;</span>
       </div>
       <div class="shopcart_add">加入购物车</div>
@@ -149,6 +149,12 @@ export default {
         images: this.swiperData,
         showIndicators: true,
         startPosition: this.currentIndex
+      });
+    },
+    // 跳转购物车
+    gotoCart() {
+      this.$router.push({
+        path: "/cart"
       });
     }
   }
